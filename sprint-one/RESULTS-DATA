@@ -1,4 +1,4 @@
-functional * 5000,000: crashed inspector
+functional * 5,000,000: crashed inspector
 
 
 pseudoclassical * 5000
@@ -358,4 +358,95 @@ queue construction: 428.950ms profiler.js:26
 pseudoclassical * 1000000 profiler.js:5
 stack construction: 500.421ms profiler.js:15
 queue construction: 407.836ms profiler.js:26
+
+
+
+
+functional * 5000 profiler.js:5
+stack construction: 7.832ms profiler.js:15
+queue construction: 12.811ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 5.297ms profiler.js:15
+queue construction: 11.960ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 6.037ms profiler.js:15
+queue construction: 5.063ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 10.406ms profiler.js:15
+queue construction: 8.154ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 6.844ms profiler.js:15
+queue construction: 5.731ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 6.793ms profiler.js:15
+queue construction: 5.717ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 9.977ms profiler.js:15
+queue construction: 9.172ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 11.096ms profiler.js:15
+queue construction: 9.256ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 7.670ms profiler.js:15
+queue construction: 9.569ms profiler.js:26
+ profiler.js:28
+functional * 5000 profiler.js:5
+stack construction: 9.444ms profiler.js:15
+queue construction: 8.209ms profiler.js:26
+
+
+
+
+
+prototypal * 5000 profiler.js:5
+stack construction: 2.271ms profiler.js:15
+queue construction: 5.271ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.429ms profiler.js:15
+queue construction: 2.698ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.508ms profiler.js:15
+queue construction: 2.651ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 7.291ms profiler.js:15
+queue construction: 2.365ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 3.840ms profiler.js:15
+queue construction: 2.784ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 4.342ms profiler.js:15
+queue construction: 2.803ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 4.219ms profiler.js:15
+queue construction: 2.860ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.894ms profiler.js:15
+queue construction: 2.561ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.746ms profiler.js:15
+queue construction: 2.898ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.566ms profiler.js:15
+queue construction: 5.699ms profiler.js:26
+ profiler.js:28
+prototypal * 5000 profiler.js:5
+stack construction: 2.737ms profiler.js:15
+queue construction: 2.809ms profiler.js:26
 

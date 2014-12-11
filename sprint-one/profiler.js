@@ -1,6 +1,6 @@
 var stacks = [];
 var queues = [];
-var tests = 1000000;
+var tests = 5000;
 
 console.log(variant + " * " + tests);
 
