@@ -1,0 +1,9 @@
+How tests were conducted:
+
+We 4 HTML files, one for each type of instantiation. Each links to a different JS file defining each constructor function.
+
+All 4 link to profiler.js. That file sets a timer, creates $tests number of instantiations, stops the timer, then prints out results.
+
+We load up each html test file in browser, clear the console, and refresh the page 10 times (with persistent console log turned on) to collect data.
+
+All raw data is copied into RESULTS-DATA file. Then organized into Google Spreadsheet (using the FANTASTIC Sublime multi-cursor).
