@@ -2,6 +2,8 @@ How the tests were conducted:
 
 We made 4 HTML files, one for each type of instantiation. Each links to a different JS file that defines the constructor function.
 
+* profiler-funcshared.html also links to underscore.js to use _.extend function.
+
 All 4 HTML files link to profiler.js. This file sets a timer, creates a variable number of instantiations -- first time 5000, then 1,000,000 -- stops the timer, then prints out results.
 
 To run the tests, we loaded up each HTML file in the browser, clear the console, and refresh the page 10 times (with persistent console log turned on) to collect data.
