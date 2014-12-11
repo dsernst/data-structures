@@ -12,11 +12,13 @@ Graph.prototype.addNode = function(node){
 Graph.prototype.contains = function(node){
 // O(1)
   return this.nodes.hasOwnProperty(node);
-}
 };
 
 Graph.prototype.removeNode = function(node){
-// O(1)
+// O(n) where n is the count of node's edges
+  for (var edge in this.nodes[node]) {
+    delete this.nodes[edge][node];
+  }
   delete this.nodes[node];
 };
 
