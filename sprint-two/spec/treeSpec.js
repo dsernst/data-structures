@@ -2,7 +2,7 @@ describe('tree', function() {
   var tree;
 
   beforeEach(function() {
-    tree = Tree();
+    tree = Tree('root');
   });
 
   it('should have methods named "addChild" and "contains", and a property named "value"', function() {
@@ -57,6 +57,24 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     tree.children[1].removeFromParent();
     expect(tree.children.length).to.equal(1);
-  })
+  });
+
+  it('Implement a .traverse() method on your tree, that executes a callback on every value', function () {
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.addChild(7);
+    tree.children[0].addChild(10);
+    tree.children[0].children[0].addChild(false);
+    tree.children[0].children[0].addChild('monkey');
+    tree.children[1].addChild(8);
+    tree.children[1].addChild(9);
+
+    var log = [];
+    var pushToLog = function (value) { log.push(value); };
+    tree.traverse(pushToLog);
+
+    expect(log.length).to.equal(9);
+    expect(log).to.eql( ["root", 5, 10, false, "monkey", 6, 8, 9, 7] );
+  });
 
 });
