@@ -1,0 +1,15 @@
+body {
+	width: 850px;
+	margin: 40px auto 0;
+	font-family: "Helvetica";
+}
+input[type="text"] {
+	width: 60px;
+}
+.idealEquation {
+	background: url(bloomFilter-FalsePositiveEquation.png);
+	background-repeat: no-repeat;
+	width: 120px;
+	height: 53px;
+	background-position-x: -183px;
+}
