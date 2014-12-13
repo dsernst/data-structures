@@ -1,21 +1,22 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Test Bloom Filter</title>
+    <title>Bloom Filter test</title>
     <script src="../lib/jquery/jquery.js"></script>
+    <script src="../lib/underscore/underscore.js"></script>
     <script type="text/javascript" src="src/bloomFilter.js"></script>
     <link rel="stylesheet" href="testBloomFilter.css" />
   </head>
   <body>
   	<h1>Analyze Bloom Filter</h1>
-	  	<p>This tests the false positive rate of the Bloom Filter in <code>src/bloomFilter.js</code>.</p>
-	  	<p><label>With an m value of:</label> <input type="text" class="mValue" value="18"></p>
-	  	<p><label>With an k value of:</label> <input type="text" class="kValue" value="3"></p>
-	  	<p><label>With an n value of:</label> <input type="text" class="nValue" value="1"></p>
+	  	<p>Test the false positive rate of the Bloom Filter in <code><a href="src/bloomFilter.js">src/bloomFilter.js</a></code>.</p>
+	  	<p><label>With an m value (filter size) of:</label> <input type="text" class="mValue" value="18"></p>
+	  	<p><label>With an k value (hash functions) of:</label> <input type="text" class="kValue" value="3"></p>
+	  	<p><label>With an n value (stored values) of:</label> <input type="text" class="nValue" value="1"></p>
 	  	<button>Run tests</button>
-  	<h2>Results</h2>
-  	<h3>Ideal</h3>
-  		<div class="idealEquation"></div>
+  	<h2>Results: <span class="testResults"></span></h2>
+  	<h2>Ideal: <span class="idealResults"></span></h2>
+  	<h3>Ideal equation <div class="idealEquation"></div></h3>
     <script type="text/javascript" src="testBloomFilter.js"></script>
   </body>
 </html>

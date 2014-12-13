@@ -1,10 +1,26 @@
 body {
-	width: 850px;
+	width: 550px;
 	margin: 40px auto 0;
 	font-family: "Helvetica";
 }
+label {
+  line-height: 30px;
+}
 input[type="text"] {
-	width: 60px;
+	width: 50px;
+  height: 33px;
+  font-size: 100%;
+  text-align: center;
+  position: absolute;
+  left: 660px;
+}
+button {
+  font-size: 20px;
+  margin-left: 90px;
+  padding: 10px 30px;
+}
+.idealResults {
+  margin-left: 30px;
 }
 .idealEquation {
 	background: url(bloomFilter-FalsePositiveEquation.png);
