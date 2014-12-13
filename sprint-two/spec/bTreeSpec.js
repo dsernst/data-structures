@@ -5,32 +5,49 @@ describe('bTree', function() {
     b = new BTree(3);
   });
 
-  it('should log stuff, allow inserts, sort nodes, handle splits, and pass to children', function() {
+  it('should allow inserts', function() {
     b.insert(50);
     expect(b.values[0]).to.equal(50);
-    b.insert(40);
+  });
+
+  it('should sort nodes', function() {
+    b.multiInsert(50, 40);
     expect(b.values[0]).to.equal(40);
-    b.insert(60);
-    expect(b.children.length).to.equal(2);
-    expect(b.children[0].values[0]).to.equal(40);
-    expect(b.children[1].values[0]).to.equal(60);
-    b.insert(30);
+  });
+
+  it('should handle splitting overloaded nodes', function() {
+    b.multiInsert(50, 40, 60);
+    expect(b.print()).to.equal("[[50],[40],[60]]");
+  });
+
+  it('should pass new values to children nodes', function() {
+    b.multiInsert(50, 40, 60, 30, 70);
     expect(b.children[0].values[0]).to.equal(30);
-    b.insert(70);
     expect(b.children[1].values[1]).to.equal(70);
-    b.insert(55);
-    expect(b.children[1].values[0]).to.equal(55);
-    expect(b.children[2].values[0]).to.equal(70);
-    expect(b.values[1]).to.equal(60);
-    b.insert(35);
+  });
+
+  it('should pass split nodes up to parent', function() {
+    b.multiInsert(50, 40, 60, 30, 70, 55);
+    expect(b.print()).to.equal("[[50,60],[30,40],[55],[70]]");
+  });
+
+  it('should split root node and create new root', function() {
+    b.multiInsert(50, 40, 60, 30, 70, 55, 35);
     expect(b.print()).to.equal("[[50],[35],[30],[40],[60],[55],[70]]");
-    b.insert(68);
+    b.insert(35);
+  });
+
+  it('should be able to pass to deeper child nodes', function() { 
+    b.multiInsert(50, 40, 60, 30, 70, 55, 35, 68);
     expect(b.print()).to.equal("[[50],[35],[30],[40],[60],[55],[68,70]]");
+  });
+
+  it('should ...?', function() { 
+    b.multiInsert(50, 40, 60, 30, 70, 55, 35, 68);
     b.insert(69);
     expect(b.print()).to.equal("[[50],[35],[30],[40],[60,69],[55],[68],[70]]");
     b.insert(56);
     expect(b.print()).to.equal("[[50],[35],[30],[40],[60,69],[55,56],[68],[70]]");
-    // debugger;
     b.insert(57);
     // expect(b.print()).to.equal("[[50,60],[35],[30],[40],[56],[55],[57],[69],[68],[70]]");
   });

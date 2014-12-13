@@ -6,7 +6,7 @@ var BTree = function (order) {
 
 BTree.prototype.insert = function (value) {
   var destination = this.pickChild(value);
-  if ( typeof destination === "number" ) {
+  if (typeof destination === "number") {
     this.insert.call(this.children[destination], value);
   } else {
     this.values.push(value);
@@ -15,11 +15,10 @@ BTree.prototype.insert = function (value) {
       this.split();
     }
   }
-
 };
 
-BTree.prototype.sortNode = function() {
-  this.values.sort(function(a,b) {return a - b;})
+BTree.prototype.sortNode = function () {
+  this.values.sort(function (a, b) {return a - b; });
 };
 
 BTree.prototype.isOverloaded = function () {
@@ -30,9 +29,9 @@ BTree.prototype.split = function () {
   var leftSplit = new BTree(this.order);
   var rightSplit = new BTree(this.order);
 
-  leftSplit.values = this.values.splice(0,1);
-  var middle = this.values.splice(0,1)[0];
-  rightSplit.values = this.values.splice(0,1);
+  leftSplit.values = this.values.splice(0, 1);
+  var middle = this.values.splice(0, 1)[0];
+  rightSplit.values = this.values.splice(0, 1);
 
   for (var i = 0; i < this.children.length; i++) {
     if (i <= this.children.length / 2) {
@@ -41,8 +40,8 @@ BTree.prototype.split = function () {
       this.children[i].parent = rightSplit;
     }
   }
-  leftSplit.children = this.children.splice(0, this.children.length/2); //TODO
-  rightSplit.children = this.children.splice(0)
+  leftSplit.children = this.children.splice(0, this.children.length / 2); //TODO
+  rightSplit.children = this.children.splice(0);
 
   if (this.parent) {
     var parent = this.parent;
@@ -53,16 +52,15 @@ BTree.prototype.split = function () {
     parent.insert(middle);
   } else {
     this.values[0] = middle;
-    this.children = [leftSplit, rightSplit]
+    this.children = [leftSplit, rightSplit];
     leftSplit.parent = this;
     rightSplit.parent = this;
   }
 };
 
 BTree.prototype.pickChild = function (value) {
-  var slots = this.children.length - 1; // TODO do we need Math.min() to take into account order?
-  if (slots - this.values.length > 0) {
-  } else if (this.children.length !== 0) {
+  var hasOpenSlots = ((this.children.length - 1) - this.values.length) > 0;
+  if (this.children.length !== 0 && !hasOpenSlots) {
     for (var destination = 0; destination < this.values.length; destination++) {
       if (value < this.values[destination]) {
         break;
@@ -75,7 +73,6 @@ BTree.prototype.pickChild = function (value) {
 
 BTree.prototype.traverse = function (callback) {
   callback(this);
-
   for (var i = 0; i < this.children.length; i++) {
     this.traverse.call(this.children[i], callback);
   }
@@ -87,4 +84,11 @@ BTree.prototype.print = function () {
     results.push(node.values);
   });
   return JSON.stringify(results);
+};
+
+BTree.prototype.multiInsert = function() {
+  var args = Array.prototype.slice.call(arguments);
+  for (var i = 0; i < args.length; i++) {
+    this.insert(args[i]);
+  }
 };
