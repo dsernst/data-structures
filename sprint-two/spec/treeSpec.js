@@ -74,7 +74,7 @@ describe('tree', function() {
     tree.traverse(pushToLog);
 
     expect(log.length).to.equal(9);
-    expect(log).to.deep.equals( ["root", 5, 10, false, "monkey", 6, 8, 9, 7] );
+    expect(log).to.eql( ["root", 5, 10, false, "monkey", 6, 8, 9, 7] );
   });
 
 });
