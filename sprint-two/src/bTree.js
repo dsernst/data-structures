@@ -5,12 +5,8 @@ var BTree = function (order) {
 };
 
 BTree.prototype.insert = function (value) {
-  var slots = this.children.length - 1; // TODO do we need Math.min() to take into account order?
   var destination = this.pickChild(value);
-  if (slots - this.values.length > 0) {
-    destination = null;
-  }
-  if ( destination !== null ) {
+  if ( typeof destination === "number" ) {
     this.insert.call(this.children[destination], value);
   } else {
     this.values.push(value);
@@ -45,7 +41,7 @@ BTree.prototype.split = function () {
       this.children[i].parent = rightSplit;
     }
   }
-  leftSplit.children = this.children.splice(0, this.children.length/2);
+  leftSplit.children = this.children.splice(0, this.children.length/2); //TODO
   rightSplit.children = this.children.splice(0)
 
   if (this.parent) {
@@ -64,7 +60,9 @@ BTree.prototype.split = function () {
 };
 
 BTree.prototype.pickChild = function (value) {
-  if (this.children.length !== 0) {
+  var slots = this.children.length - 1; // TODO do we need Math.min() to take into account order?
+  if (slots - this.values.length > 0) {
+  } else if (this.children.length !== 0) {
     for (var destination = 0; destination < this.values.length; destination++) {
       if (value < this.values[destination]) {
         break;
