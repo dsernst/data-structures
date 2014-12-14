@@ -71,6 +71,16 @@ BTree.prototype.pickChild = function (value) {
   return null;
 };
 
+BTree.prototype.contains = function (value) {
+  var found = false;
+  this.traverse(function (node) {
+    for (var i = 0; i < node.values.length; i++){
+      found = found || value === node.values[i];
+    }
+  });
+  return found;
+}
+
 BTree.prototype.traverse = function (callback) {
   callback(this);
   for (var i = 0; i < this.children.length; i++) {
