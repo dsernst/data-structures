@@ -29,12 +29,12 @@ BTree.prototype.split = function () {
   var leftSplit = new BTree(this.order);
   var rightSplit = new BTree(this.order);
 
-  leftSplit.values = this.values.splice(0, 1);
-  var middle = this.values.splice(0, 1)[0];
-  rightSplit.values = this.values.splice(0, 1);
+  leftSplit.values = this.values.splice(0, Math.ceil(this.values.length / 2) - 1);
+  var median = this.values.splice(0, 1)[0];
+  rightSplit.values = this.values.splice(0);
 
   for (var i = 0; i < this.children.length; i++) {
-    if (i <= this.children.length / 2) {
+    if (i + 1 <= this.children.length / 2) {
       this.children[i].parent = leftSplit;
     } else {
       this.children[i].parent = rightSplit;
@@ -49,9 +49,9 @@ BTree.prototype.split = function () {
     rightSplit.parent = parent;
     var destination = parent.pickChild(leftSplit.values[0]);
     parent.children.splice(destination, 1, leftSplit, rightSplit);
-    parent.insert(middle);
+    parent.insert(median);
   } else {
-    this.values[0] = middle;
+    this.values[0] = median;
     this.children = [leftSplit, rightSplit];
     leftSplit.parent = this;
     rightSplit.parent = this;
@@ -91,4 +91,12 @@ BTree.prototype.multiInsert = function() {
   for (var i = 0; i < args.length; i++) {
     this.insert(args[i]);
   }
+};
+
+BTree.prototype.printParents = function () {
+  var parents = [];
+  this.traverse(function (node) {
+    parents.push(node.parent.values);
+  });
+  return JSON.stringify(parents);
 };
